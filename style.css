@@ -307,6 +307,30 @@ header .og-search {
 	font-weight:bold;
 }
 
+.arch-ideas {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.arch-open{
+	background: #F1FFF7;
+	border: 2px solid #528264;
+}
+
+.arch-closed{
+	background: #FFF1F1;
+	border: 2px solid #D40A0A;
+}
+
+.arch-standard{
+	background: #F8f8f8;
+	border: 2px solid #cacaca;
+}
+
+.list-ideacat{
+	padding:20px;
+}
+
 /* Datasets ------------------------------------- */
 .datatitle h1 {
     background: url("img/icons/upload.png") no-repeat scroll left center rgba(0, 0, 0, 0);
@@ -758,6 +782,29 @@ footer .credits {
     margin: 0 0 30px;
     padding: 0 20px 20px;
 	*/
+}
+
+.alignleft {
+    float: left;
+}
+
+img.alignleft {
+	margin: 0 15px 10px 0px;
+}
+
+.alignright {
+    float: right;
+}
+
+img.alignright {
+	margin: 15px 0px 10px 0px;
+}
+
+.info-widget h3 {
+    margin: 0 0 20px 0px;
+    padding: 0 0 10px 0px;
+    border-bottom: 1px solid #cacaca;
+    text-align: center;
 }
 
 .w3eden {

@@ -3,7 +3,8 @@
 	Template Name: Ideas List
 	*/
 	
-	get_header(); ?>
+	get_header(); 
+?>
 
 	<div class="container title toptitle ideatitle">
 		<div class="col-md-12">
@@ -21,6 +22,42 @@
 		<div class="col-md-8 white content archive idearch">
 			<?php the_content(); ?>
 			<?php 
+				$catz = get_terms( 'idea_cat', array( 'hide_empty' => false ) );
+				foreach($catz as $cat){
+					$class='standard';
+					$is_active = get_tax_meta($cat->term_id, 'opengov_is_active'); 
+					$close_date = get_tax_meta($cat->term_id, 'opengov_close_date');
+					if($is_active) $class='open';
+				?>
+						
+						<div class="arch-item list-ideacat arch-<?php echo $class; ?>">
+							<h2><a class="" href="<?php echo esc_url( get_term_link( $cat ) ); ?>" title="<?php echo  $cat->name; ?>"><?php echo  $cat->name; ?></a></h2>
+							<div class="col-md-9">	
+								<div class="idearchcontent">	
+									<?php echo apply_filters('the_content', $cat->description ); ?>
+								</div>
+							</div>
+							<div class="col-md-3">	
+								<div class="idea-meta">
+									<p class="idea-date">Έως <?php echo date('d/m/Y', strtotime($close_date)); ?></p>
+									<p class="idea-comments">
+										<a class="btn btn-default" href="<?php echo esc_url( get_term_link( $cat ) ); ?>" >Προβολή Ιδεών</a>
+									</p>
+									<?php if($is_active){ ?>
+										<p class="idea-comments">
+											<a class="btn btn-success" href="<?php echo get_permalink(16); ?>?call=<?php echo  $cat->term_id; ?>" >Υποβολή Ιδέας</a>
+										</p>
+									<?php } ?>
+								</div>
+							</div>
+						</div>
+			
+				<?php
+				}
+			?>
+
+			<?php 
+				/*
 				$args = array(
 					'post_type' => 'idea'
 				); 
@@ -53,7 +90,7 @@
 					
 				</div>
 				
-			<?php endwhile;  endif; wp_reset_query(); ?>
+			<?php endwhile;  endif; wp_reset_query(); */ ?>
 		</div>
 		<div class="col-md-4">
 			<?php get_sidebar('idea'); ?>

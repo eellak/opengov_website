@@ -1,9 +1,15 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+	$term_slug = get_query_var( 'term' );
+	$taxonomyName = get_query_var( 'taxonomy' );
+	$current_term = get_term_by( 'slug', $term_slug, $taxonomyName );
+	$is_active = get_tax_meta($current_term->term_id, 'opengov_is_active');
+?>
 
 	<div class="container title toptitle ideatitle">
 		<div class="col-md-12">
 			<h1>
-				<span><a href="<?php echo URL; ?>">Επιστροφή</a></span>
+				<span><a href="<?php echo get_permalink(46); ?>">Επιστροφή</a></span>
 				Ιδέες / <?php single_cat_title(); ?>
 			</h1>
 			<a class="submit-idea" href="<?php echo get_permalink(16); ?>">
@@ -13,7 +19,14 @@
 	</div>
 	
 	<div class="container main">
-		<div class="col-md-8 white content archive idearch">	
+		<div class="col-md-8 white content archive idearch">
+			<?php 
+				$class='closed';
+				if($is_active) $class='open';
+				echo '<div class="arch-ideas arch-'.$class.'">';
+				echo apply_filters('the_content', $current_term ->description );
+				echo '</div>'; ?>
+				
 			<?php if(have_posts()): while(have_posts()): the_post(); ?>
 				
 				<div class="arch-item">

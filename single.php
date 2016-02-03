@@ -4,9 +4,13 @@
 	<div class="container title toptitle postitle">
 		<div class="col-md-12">
 			<h1>
-				<?php $cats = get_the_terms(get_the_ID(), 'category'); ?>
-				<span> <?php foreach($cats as $cat){ echo '<a href="'.get_term_link( $cat).'">'.$cat->name.'</a>'; } ?> </span>
-				<?php the_title(); ?>
+				<?php 
+					$cats = get_the_terms(get_the_ID(), 'category'); 
+					if(!empty($cats)){
+				?>
+						<span> <?php foreach($cats as $cat){ echo '<a href="'.get_term_link( $cat).'">'.$cat->name.'</a>'; } ?> </span>
+				<?php }
+					the_title(); ?>
 			</h1>
 		</div>
 	</div>
@@ -24,7 +28,7 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<?php get_sidebar('idea'); ?>
+			<?php get_sidebar(); ?>
 		</div>
 	</div>
 	

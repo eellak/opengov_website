@@ -4,9 +4,14 @@
 	<div class="container title toptitle ideatitle">
 		<div class="col-md-12">
 			<h1>
-				<?php $cats = get_the_terms(get_the_ID(), 'idea_cat'); ?>
-				<span> <?php foreach($cats as $cat){ echo '<a href="'.get_term_link( $cat).'">Ιδέες / '.$cat->name.'</a>'; break; } ?> </span>
-				<?php the_title(); ?>
+				<?php 	
+					global $cats;
+					$cats = get_the_terms(get_the_ID(), 'idea_cat'); 
+					if(!empty($cats)){
+				?>
+						<span> <?php foreach($cats as $cat){ echo '<a href="'.get_term_link( $cat).'">Ιδέες / '.$cat->name.'</a>'; } ?> </span>
+				<?php }
+					the_title(); ?>
 			</h1>
 			<a class="submit-idea" href="<?php echo get_permalink(16); ?>">
 				Υπέβαλλε τη δική σου!

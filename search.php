@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+	
 	<div class="container title">
 		<div class="col-md-12">
 			<h1>Αναζήτηση '<?php echo get_search_query(); ?>'</h1>
@@ -23,7 +23,15 @@
 					<a class="more" href="<?php the_permalink();?>" title="<?php the_title_attribute();?>">Διαβάστε περισσότερα &raquo;</a>
 				</div>
 				
-			<?php endwhile; else: include('lib/error.php'); endif; ?>
+			<?php endwhile; else: ?>
+				<div class="arch-item">
+					<h2>Δεν εντοπίστηκε κάτι..</h2>
+					
+					<div class="arch-content">
+						<p>Δοκιμάστε με διαφορετικούς όρους.</p>
+					</div>
+				</div>
+			<?php endif; ?>
 		</div>
 		<div class="col-md-4">
 			<?php get_sidebar(); ?>

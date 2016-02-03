@@ -6,6 +6,9 @@
 	$success = false;
 	$cp_message = '';
 	
+	$call = 0;
+	if(isset($_GET['call']) and intval(trim($_GET['call'])) > 0) $call = intval(trim($_GET['call']));
+	
 	if(isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
 		
 		$title = sanitize_text_field($_POST['title']);
@@ -61,7 +64,7 @@
 			<?php /*if($success){ ?>
 			
 			<?php } else { */ ?>
-				<form action="<?php the_permalink(); ?>" method="post">
+				<form action="<?php the_permalink(); ?>" id="submit-idea-form" method="post">
 					
 					<div class="col-md-6">
 					
@@ -71,13 +74,20 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="ideacat">Κατηγορία Ιδέας</label>
+							<label for="ideacat">Κύκλος Υποβολής</label>
+							<select name="idea_cat" id="idea_cat" class="form-control" tabindex="4">
 							<?php 
-								$thema = wp_dropdown_categories( 'show_option_none=&tab_index=4&taxonomy=idea_cat&hide_empty=0&echo=0' ); 
-								$thema = str_replace('cat','idea_cat', $thema );
-								$thema = str_replace('postform','form-control', $thema );
-								echo $thema;
+								$catz = get_terms( 'idea_cat', array( 'hide_empty' => false ) );
+								foreach($catz as $cat){
+									$is_active = get_tax_meta($cat->term_id, 'opengov_is_active');
+									if($is_active){
+										$selected = '';
+										if($call != 0 and $cat->term_id == $call) $selected = 'selected="selected"';
+										echo '<option class="level-0" value="'.$cat->term_id.'" '.$selected.'>'.$cat->name.'</option>';
+									}
+								}
 							?>
+							</select>
 						</div>
 						
 						<div class="form-group">

@@ -68,7 +68,7 @@ function opengov_post_types() {
 	);
 
 	register_post_type( 'idea', $args );
-	register_taxonomy( 'idea_cat', 'idea', array( 'hierarchical' => true, 'label' => __('Category', 'opengov'), 'query_var' => true, 'rewrite' => false ));
+	register_taxonomy( 'idea_cat', 'idea', array( 'hierarchical' => true, 'label' => __('Category', 'opengov'), 'query_var' => true, 'rewrite' => true ));
 	
 	$args = array(
 		'labels'             => array(
@@ -207,8 +207,30 @@ function opengov_widgets_init() {
 		'before_title'  => '',
 		'after_title'   => '',
     ) );
+		
+}
+
+require_once("lib/Tax-meta-class/Tax-meta-class.php");
+if (is_admin()){
 	
+	//examples: https://github.com/bainternet/Tax-Meta-Class/blob/master/class-usage-demo.php
 	
+	$config = array(
+		'id' => 'opengov_meta_box',         // meta box id, unique per meta box
+		'title' => 'OpenGov Meta Box',      // meta box title
+		'pages' => array('idea_cat'),       // taxonomy name, accept categories, post_tag and custom taxonomies
+		'context' => 'normal',            	// where the meta box appear: normal (default), advanced, side; optional
+		'fields' => array(),            	// list of meta fields (can be added by field arrays)
+		'local_images' => true,          	// Use local or hosted images (meta box images for add/remove)
+		'use_with_theme' => true 			
+	);
+  
+	$opengov_cat_meta =  new Tax_Meta_Class($config);
+	
+	$opengov_cat_meta->addCheckbox('opengov_is_active', array('name'=> __('Is Active Call','tax-meta')));
+	$opengov_cat_meta->addDate('opengov_close_date', array('name'=> __('Open Until','tax-meta')));
+	
+	$opengov_cat_meta->Finish();
 }
 
 require_once('lib/wp_bootstrap_navwalker.php');
