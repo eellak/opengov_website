@@ -27,6 +27,7 @@
 					$class='standard';
 					$is_active = get_tax_meta($cat->term_id, 'opengov_is_active'); 
 					$close_date = get_tax_meta($cat->term_id, 'opengov_close_date');
+					$short_descr = get_tax_meta($cat->term_id, 'opengov_short_descr');
 					if($is_active) $class='open';
 				?>
 						
@@ -34,7 +35,7 @@
 							<h2><a class="" href="<?php echo esc_url( get_term_link( $cat ) ); ?>" title="<?php echo  $cat->name; ?>"><?php echo  $cat->name; ?></a></h2>
 							<div class="col-md-9">	
 								<div class="idearchcontent">	
-									<?php echo apply_filters('the_content', $cat->description ); ?>
+									<?php echo apply_filters('the_content', $short_descr ); ?>
 								</div>
 							</div>
 							<div class="col-md-3">	
