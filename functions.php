@@ -37,11 +37,16 @@ function opengov_scripts(){
 		wp_enqueue_style( 'bootstrap', CSS.'/bootstrap.min.css' );
 		wp_enqueue_style( 'opengov', ROOT.'/style.css' );
 		
-		
 		wp_enqueue_script( 'bootstrap-js', JS . '/bootstrap.min.js', array( 'jquery' ) , '1.2.0' , true );
 		wp_enqueue_script( 'viewport-ie', JS . '/ie10-viewport-bug-workaround.js', array( 'jquery' ) , '1.2.0' , true );
 		wp_enqueue_script( 'placeholder', JS . '/jquery.placeholder.min.js', array( 'jquery' ) , '1.2.0' , true );
 		wp_enqueue_script( 'custom', JS . '/custom.js', array( 'jquery' ) , '1.2.0' , true );
+		
+		if(is_page_template('template_submit_idea.php')){
+			wp_enqueue_script( 'validator-js', JS . '/validation/jquery.validate.min.js', array( 'jquery' ) , '1.2.0' , true );
+			wp_enqueue_script( 'validator-methods-js', JS . '/validation/additional-methods.min.js', array( 'jquery' ) , '1.2.0' , true );
+			wp_enqueue_script( 'submit-validator-js', JS . '/idea.validate.js', array( 'jquery' ) , '1.2.0' , true );
+		}
 		
 	}
 }

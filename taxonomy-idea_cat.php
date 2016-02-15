@@ -12,7 +12,7 @@
 				<span><a href="<?php echo get_permalink(46); ?>">Επιστροφή</a></span>
 				Ιδέες / <?php single_cat_title(); ?>
 			</h1>
-			<a class="submit-idea" href="<?php echo get_permalink(16); ?>">
+			<a class="submit-idea" href="<?php echo get_permalink(16); ?>?call=<?php echo $current_term->term_id; ?>">
 				Υπέβαλλε τη δική σου!
 			</a>
 		</div>
@@ -54,7 +54,11 @@
 					
 				</div>
 				
-			<?php endwhile; else: include('lib/error.php'); endif; ?>
+			<?php endwhile; else: ?>
+				<h4>Μέχρι στιγμής δεν έχει υποβληθεί κάποια ιδέα!</h4>
+				<p>&nbsp;</p>
+				<p>Θέλεις να είναι η δική σου ιδέα η πρώτη; <strong><a href="<?php echo get_permalink(16); ?>?call=<?php echo $current_term->term_id; ?>">Πες μια Ιδέα</a></strong></p>
+			<?php endif; ?>
 		</div>
 		<div class="col-md-4">
 			<?php get_sidebar('idea'); ?>

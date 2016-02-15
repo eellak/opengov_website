@@ -862,3 +862,11 @@ img.alignright {
 .ribbon:after {
   right: 0;
 }
+
+#submit-idea-form  label.error {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    text-align: right;
+    width: 100%;
+    margin-top: 10px;
+}

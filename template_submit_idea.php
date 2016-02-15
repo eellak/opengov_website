@@ -64,7 +64,7 @@
 	
 	$submit_link = get_the_permalink();
 	if($call != 0){
-		$submit_link .='/?call='.$call;
+		$submit_link .='?call='.$call;
 	}
 ?>
 	
@@ -160,8 +160,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="description">Συνοδευτικό Αρχείο (pdf, ppt, doc, pptx, docx, odt)</label>
-							<input type="file" name="ideafile" size="40">
+							<label for="ideafile">Συνοδευτικό Αρχείο (pdf, ppt, doc, pptx, docx, odt)</label>
+							<input type="file" id="ideafile" name="ideafile" size="40">
 						</div>
 						
 						
