@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</footer>
-	<div class="ribbon-wrapper"><div class="ribbon">BETA</div></div>
+	<div class="ribbon-wrapper"><a href="<?php echo get_permalink(196); ?>"><div class="ribbon">BETA</div></div>
 	<?php wp_footer(); ?>
 </body>
 </html>

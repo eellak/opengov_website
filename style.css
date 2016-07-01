@@ -870,3 +870,43 @@ img.alignright {
     width: 100%;
     margin-top: 10px;
 }
+
+.comment-notes {
+    display: block;
+    float: left !important;
+    margin: 0 0 20px;
+    width: 100% !important;
+	 text-align: left !important;
+}
+
+.comment-form .help-block {
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding-left: 16.6666%;
+    text-align: left !important;
+	width: 100% !important;
+}
+
+.captchaSizeDivLarge {
+    text-align: right;
+    width: 100% !important;
+}
+
+.captchaSizeDivLarge > div {
+    display: inline;
+}
+
+img.si-captcha {
+    display: inline;
+    float: none !important;
+}
+
+.form-submit.pull-right.col-md-10 {
+    text-align: left !important;
+}
+
+#commentform p {
+    float: right;
+    width: 83.3333%;
+	text-align:right;
+}

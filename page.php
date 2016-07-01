@@ -11,10 +11,15 @@
 	</div>
 	
 	<div class="container main">
-		<div class="col-md-8 white content">
-			<?php the_content(); ?>
+		<div class="col-md-8">
+			<div class="col-md-12 white content">
+				<?php the_content(); ?>
+			</div>
+			<div class="col-md-12">
+				<?php comments_template(); ?>
+			</div>
 		</div>
-		<div class="col-md-4 sidebar">
+		<div class="col-md-4">
 			<?php get_sidebar(); ?>
 		</div>
 	</div>

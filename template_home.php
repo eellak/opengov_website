@@ -9,22 +9,16 @@
 	
 	<div class="jumbotron">
       <div class="container"> 
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<h1><?php the_title(); ?></h1>
 			<?php 
 				if($post->post_excerpt != ''){
 					echo get_the_excerpt();
 				}
 			?>
-		</div>
-		<div class="col-md-3"> </div>
-		<?php 
-			
-			$call_to = get_field('call_to_action_list');
-			if($call_to !='') $classname = ' homeaction';
-		?>
-		<div class="col-md-3<?php echo $classname; ?>">
-			<?php echo $call_to; ?>
+			<a class="submit-idea" href="<?php echo get_permalink(16); ?>">
+				Πες μια ιδέα!
+			</a>
 		</div>
       </div>
     </div>
@@ -36,7 +30,7 @@
 				<?php the_content(); ?>
 				<a href="<?php echo get_field('main_call_to_action_link'); ?>" class="calltoaction"><?php echo get_field('main_call_to_action_text');?></a>
 				
-				<a href="http://guest3.ellak.gr/cons/?p=19" class="calltoaction calltodeliberation" target="_blank">
+				<a href="/cons/?p=19" class="calltoaction calltodeliberation" target="_blank">
 					Συμμετέχετε στη διαβούλευση για τους Στόχους του στρατηγικού -επιχειρησιακού σχεδίου ανοικτής ηλεκτρονικής διακυβέρνησης
 				</a>
 			</div>
@@ -44,7 +38,7 @@
 			<div class="col-md-5">
 			
 				<div class="home-intro home-intro-cons">
-					<a href="http://guest3.ellak.gr/cons/">
+					<a href="/cons/">
 						<div class="iconer"></div>
 						<div class="contenter">
 							<strong>Δημόσια διαβούλευση</strong><br />

@@ -48,7 +48,7 @@
 						
 						if($glossary_cat->count == 0) $class .= ' disabled';
 							
-						echo '<a href="'.get_permalink().'&gcat='.$glossary_cat->term_id.'" class="btn btn-default'.$class.'">'.$glossary_cat->name.'</a>';
+						echo '<a href="'.get_permalink().'?gcat='.$glossary_cat->term_id.'" class="btn btn-default'.$class.'">'.$glossary_cat->name.'</a>';
 		
 					}
 				?>
